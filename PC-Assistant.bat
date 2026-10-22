@@ -52,7 +52,7 @@ goto MENU
 cls
 echo =====DISK SPACE=====
 echo.
-powershell -NoProfile -Command "Get-PSDrive -PSProvider FileSystem | Select-Object Name,@{Name='Used(GB)';Expression={[math]::Round($_.Used / 1GB, 2)}},@{Name='Free(GB)';Expression={[math]::Round($_.Free / 1GB, 2)}} | Format-Table-AutoSize"
+powershell -NoProfile -Command "Get-Volume | Where-Object DriveLetter | Select-Object DriveLetter,FileSystemLabel,@{Name='SizeGB';Expression={[math]::Round($_.Size/1GB,2)}},@{Name='FreeGB';Expression={[math]::Round($_.SizeRemaining/1GB,2)}} | Format-Table -Autosize"
 echo.
 pause
 goto MENU
@@ -85,38 +85,44 @@ set "REPORTFILE=%USERPROFILE%\Desktop\system-report.txt"
 
 echo Generating report. Please wait...
 
-echo PC ASSISTANT SYSTEM REPORT >"%REPORTFILE%"
-echo ===========================================================================================================================================================
-"%REPORTFILE%"
-echo. >> "%REPORTFILE%"
-
-echo COMPUTER NAME: >> "%REPORTFILE%"
-hostname >> "%REPORTFILE%"
-
-echo. >> "%REPORTFILE%"
-
-echo WINDOWS VERSION: >> "%REPORTFILE%"
-ver >> "%REPORTFILE%"
-
-echo. >> "%REPORTFILE%"
-echo SYSTEM INFORMATION: >> "%REPORTFILE%"
-systeminfo >> "%REPORTFILE%"
-
-echo. >> "%REPORTFILE%"
-echo NETWORK INFORMATION: >> "%REPORTFILE%"
-ipconfig /all >> "%REPORTFILE%"
-
-echo. >> "%REPORTFILE%"
-echo RUNNING PROCESSES: >> "%REPORTFILE%"
-tasklist >> "%REPORTFILE%"
-
 echo.
-echo Report saved to:
-echo "%REPORTFILE%"
+(
+echo PC ASSISTANT SYSTEM REPORT
+echo ===========================================================================================================================================================
+echo.
+echo DATE AND TIME:
+echo %DATE% %TIME%
+echo.
+echo COMPUTER NAME:
+hostname
+echo.
+echo WINDOWS VERSION:
+ver
+echo.
+echo SYSTEM INFORMATION:
+systeminfo
+echo.
+echo NETWORK INFORMATION:
+ipconfig
+echo.
+echo RUNNING PROCESSES:
+tasklist
+) > "%REPORTFILE%" 2>&1
+
+if exist "%REPORTFILE%" (
+	echo.
+	echo Report saved to:
+	echo "%REPORTFILE%"
+	echo.
+	echo Opening report in Notepad...
+	start "" notepad "%REPORTFILE%"
+) else (
+	echo ERROR: The report could not be created.
+)
+
 echo.
 pause
 goto MENU
-
 
 :END
 echo.

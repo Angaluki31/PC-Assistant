@@ -2,7 +2,7 @@
 
 
 
-A simple Windows command-line assistant built with Batch scripting. It provides a menu for viewing computer information, checking disk space, inspecting network settings, viewing running processes, generating a battery report, and saving a system report.
+A Windows command-line assistant built with Batch scripting and PowerShell. It provides a menu for viewing computer information, checking disk space, inspecting network settings, viewing running processes, generating a battery report, and saving a system report.
 
 
 
@@ -15,7 +15,7 @@ A simple Windows command-line assistant built with Batch scripting. It provides 
 * **Network Information:** Display network configuration using Windows networking commands.
 * **Running Processes:** List currently running processes.
 * **Battery Report:** Generate a Windows battery report when supported.
-* **System Report:** Save computer, operating system, network, and process information to a text file. 
+* **System Report:** Save computer, operating system, network, and process information to a text file.
 
 
 
@@ -36,7 +36,7 @@ A simple Windows command-line assistant built with Batch scripting. It provides 
 
 1. Download or clone this repository.
 2. Open the project folder.
-3. Double-click PC-Assistant.bat, or open PowerShell in the folder and run: 
+3. Double-click PC-Assistant.bat, or open PowerShell in the folder and run:
 
 &#x20;                   .\\PC-Assistant.bat
 
@@ -48,7 +48,9 @@ A simple Windows command-line assistant built with Batch scripting. It provides 
 
 
 
-This is an early version of the project. Some features may need adjustments depending on the Windows version and system configuration. Disk-space reporting and full system-report generation are still being improved.
+Actively learning and improving.
+
+Contributions, suggestions and feedback are welcome.
 
 
 
@@ -68,7 +70,13 @@ This is an early version of the project. Some features may need adjustments depe
 
 
 
-This project is helping me practice Windows command-line tools, Batch scripting, PowerShell integration, troubleshooting, and Git/GitHub version control.
+This project is helping me practice:
+
+* &#x20;Windows command-line tools and operations
+* &#x20;Batch scripting and automation
+* &#x20;PowerShell integration 
+* &#x20;System troubleshooting
+* &#x20;Git/GitHub version control.
 
 
 
@@ -80,7 +88,7 @@ Brian Angaluki
 
 
 
-**License** 
+**License**
 
 
 
